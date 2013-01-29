@@ -1,0 +1,26 @@
+﻿[alias]
+	co = checkout
+	st = status -sb
+	lg = log --graph --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%Cred%d%Creset %Cgreen(%ai)%Creset %C(bold blue)%an%Creset%n%Creset%B' --name-status
+	ls = ls-files
+	unstage = reset HEAD
+	discard = checkout --
+	alias = config --get-regexp alias
+	pr = request-pull
+	lgs = log --graph --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%Cred%d%Creset %Cgreen(%ai)%Creset %C(bold blue)%an%Creset%n%Creset%B' --stat
+	lgo = log --graph --pretty=format:'%C(yellow)%h%Creset%Cred%d%Creset %Cgreen(%ai)%Creset %C(bold blue)%an%n  %Creset%s%Creset'
+	cadd = commit --amend -C HEAD
+	idiff = diff --color-words=.
+	lo = log --oneline --graph --decorate
+	branchpoint = !sh -c 'git rev-list --boundary $1...$2 |grep ^- |cut -c2-'
+	lgp = log -p --decorate --graph --abbrev-commit -b
+	ignore = update-index --assume-unchanged
+	unignore = update-index --no-assume-unchanged
+[push]
+	default = upstream
+[difftool "winmerge"]
+	cmd = c:/winprogs/winmerge/winmergeu.exe -e -u -x -wl -wr -dl "base" -dr "mine" "$LOCAL" "$REMOTE"
+[mergetool "p4merge"]
+	path = c:/winprogs/p4merge/p4merge.exe
+[core]
+	safecrlf = true
