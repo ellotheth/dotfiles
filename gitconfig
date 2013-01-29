@@ -24,3 +24,5 @@
 	path = c:/winprogs/p4merge/p4merge.exe
 [core]
 	safecrlf = true
+[color]
+    ui = on
