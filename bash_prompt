@@ -1,1 +1,1 @@
-﻿export PS1="[\u @ \h] \w [\t]\n(\`if [ \$? = 0 ]; then echo ^_^; else echo -_-; fi\`) \! \$ "
+export PS1="[\u @ \h] \w [\t]\n(\`if [ \$? = 0 ]; then echo ^_^; else echo -_-; fi\`) \! \$ "
