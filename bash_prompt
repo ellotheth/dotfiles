@@ -1,1 +1,13 @@
-export PS1="[\u @ \h] \w [\t]\n(\`if [ \$? = 0 ]; then echo ^_^; else echo -_-; fi\`) \! \$ "
+if [ -f ~/.git-prompt.sh ]; then
+    . ~/.git-prompt.sh
+    gitprompt=' ~ $(__git_ps1 "%s")'
+
+    export GIT_PS1_SHOWDIRTYSTATE=1
+    export GIT_PS1_SHOWUNTRACKEDFILES=1
+    export GIT_PS1_SHOWSTASHSTATE=1
+    export GIT_PS1_SHOWUPSTREAM="auto"
+else
+    gitprompt=''
+fi
+
+export PS1="[\u @ \h] \w [\t]$gitprompt\n(\`if [ \$? = 0 ]; then echo ^_^; else echo -_-; fi\`) \! \$ "
