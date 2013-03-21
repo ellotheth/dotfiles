@@ -16,6 +16,7 @@
 	lgp = log -p --decorate --graph --abbrev-commit -b
 	ignore = update-index --assume-unchanged
 	unignore = update-index --no-assume-unchanged
+    shd = show --decorate
 [push]
 	default = upstream
 [difftool "winmerge"]
