@@ -10,4 +10,14 @@ else
     gitprompt=''
 fi
 
-export PS1="[\u @ \h] \w [\t]$gitprompt\n(\`if [ \$? = 0 ]; then echo ^_^; else echo -_-; fi\`) \! \$ "
+black="\[\e[30;1m\]"
+red="\[\e[31;1m\]"
+green="\[\e[32;1m\]"
+yellow="\[\e[33;1m\]"
+blue="\[\e[34;1m\]"
+pink="\[\e[35;1m\]"
+cyan="\[\e[36;1m\]"
+white="\[\e[37;1m\]"
+reset="\[\e[0m\]"
+
+export PS1="$black[$green\u $blue@ $cyan\h$black] $red\w $black[$blue\t$black]$green$gitprompt\n$yellow(\`if [ \$? = 0 ]; then echo ^_^; else echo -_-; fi\`) $black\! $reset\$ "
