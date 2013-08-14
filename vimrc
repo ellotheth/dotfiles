@@ -14,6 +14,7 @@ set expandtab
 set smarttab
 set backspace=indent,eol,start
 set colorcolumn=80
+set textwidth=79
 
 syntax on
 filetype on
