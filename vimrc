@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 set nocompatible
 
 set enc=utf-8
@@ -15,6 +17,8 @@ set smarttab
 set backspace=indent,eol,start
 set colorcolumn=80
 set textwidth=79
+set fdm=syntax
+set nofoldenable
 
 syntax on
 filetype on
@@ -33,3 +37,12 @@ set directory=~/.vim/tmp,/var/tmp,/tmp
 
 set incsearch
 
+if has ("autocmd")
+    autocmd filetype java setlocal omnifunc=javacomplete#Complete
+    autocmd filetype java setlocal completefunc=javacomplete#CompleteParamsInfo
+
+    autocmd filetype python set fdm=indent
+endif
+
+inoremap <C-@> <c-x><c-o>
+nmap <F9> :TagbarToggle<CR>
