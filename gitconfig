@@ -19,6 +19,7 @@
     shd = show --decorate
 	snap = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
 	pushs = push --recurse-submodules=on-demand
+	wat = !git lgo --all --since='yesterday' && git diff --stat '@{yesterday}'
 [push]
 	default = upstream
 [difftool "winmerge"]
