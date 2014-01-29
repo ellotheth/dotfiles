@@ -1,0 +1,60 @@
+---
+- hosts: localhost
+  sudo: no
+
+  vars:
+    home: '{{ ansible_env.HOME }}'
+    dotfiles: '{{ home }}/dotfiles'
+
+  tasks:
+    - name: update bashrc
+      lineinfile:
+        state: present
+        dest: '{{ home }}/.bashrc'
+        line: '{{ item }}'
+      with_items:
+        - 'export EDITOR=vim'
+        - 'source ~/dotfiles/bash_aliases'
+        - 'source ~/dotfiles/bash_prompt'
+
+    - name: include vimrc
+      lineinfile:
+        state: present
+        create: yes
+        dest: '{{ home }}/.vimrc'
+        line: 'source ~/dotfiles/vimrc'
+        insertbefore: BOF
+
+    - name: update vim bundles
+      command: /usr/bin/git submodule update --init creates='{{ dotfiles }}/vim/pathogen/autoload/pathogen.vim' chdir='{{ dotfiles }}'
+
+    - name: link pathogen
+      file:
+        src: '{{ dotfiles }}/vim/pathogen/autoload/pathogen.vim'
+        dest: '{{ home }}/.vim/autoload/pathogen.vim'
+        state: link
+
+    - name: link bundles
+      file:
+        src: '{{ dotfiles }}/vim/bundle'
+        dest: '{{ home }}/.vim/bundle'
+        state: link
+
+    - name: get git-completion
+      get_url:
+        url: 'https://raw.github.com/git/git/master/contrib/completion/git-completion.bash'
+        dest: '{{ home }}/.git-completion.sh'
+        mode: 0755
+
+    - name: update bashrc with git improvements
+      lineinfile:
+        state: present
+        dest: '{{ home }}/.bashrc'
+        line: '{{ item }}'
+      with_items:
+        - 'source ~/.git-completion.sh'
+        - 'source /etc/bash_completion.d/git-prompt'
+
+    - name: include gitconfig
+      command: /usr/bin/git config --global include.path {{ dotfiles }}/gitconfig chdir='{{ dotfiles }}'
+
