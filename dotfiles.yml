@@ -28,6 +28,9 @@
     - name: update vim bundles
       command: /usr/bin/git submodule update --init creates='{{ dotfiles }}/vim/pathogen/autoload/pathogen.vim' chdir='{{ dotfiles }}'
 
+    - name: create vim directories
+      file: dest='{{ home }}/.vim/autoload' state=directory recurse=yes
+
     - name: link pathogen
       file:
         src: '{{ dotfiles }}/vim/pathogen/autoload/pathogen.vim'
@@ -46,14 +49,22 @@
         dest: '{{ home }}/.git-completion.sh'
         mode: 0755
 
+    - name: link git-prompt
+      file:
+        src: '/etc/bash_completion.d/git-prompt'
+        dest: '{{ home }}/.git-prompt.sh'
+        state: link
+        mode: 0755
+
     - name: update bashrc with git improvements
       lineinfile:
         state: present
         dest: '{{ home }}/.bashrc'
         line: '{{ item }}'
+        insertbefore: 'bash_prompt'
       with_items:
         - 'source ~/.git-completion.sh'
-        - 'source /etc/bash_completion.d/git-prompt'
+        - 'source ~/.git-prompt.sh'
 
     - name: include gitconfig
       command: /usr/bin/git config --global include.path {{ dotfiles }}/gitconfig chdir='{{ dotfiles }}'
