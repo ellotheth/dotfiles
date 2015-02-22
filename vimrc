@@ -42,7 +42,11 @@ if has ("autocmd")
     autocmd filetype java setlocal completefunc=javacomplete#CompleteParamsInfo
 
     autocmd filetype python set fdm=indent
+
+    autocmd filetype go set noexpandtab
 endif
+
+let g:go_fmt_command = "goimports"
 
 inoremap <C-@> <c-x><c-o>
 nmap <F9> :TagbarToggle<CR>
