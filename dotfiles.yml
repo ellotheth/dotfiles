@@ -13,6 +13,7 @@
         dest: '{{ home }}/.bashrc'
         line: '{{ item }}'
       with_items:
+        - 'export TERM=xterm-256color'
         - 'export EDITOR=vim'
         - 'source ~/dotfiles/bash_aliases'
         - 'source ~/dotfiles/bash_prompt'
