@@ -47,6 +47,7 @@ if has ("autocmd")
 endif
 
 let g:go_fmt_command = "goimports"
+let g:go_jump_to_error = 0
 
 inoremap <C-@> <c-x><c-o>
 nmap <F9> :TagbarToggle<CR>
