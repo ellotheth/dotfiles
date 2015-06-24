@@ -37,6 +37,8 @@ set directory=~/.vim/tmp,/var/tmp,/tmp
 
 set incsearch
 
+let mapleader=" "
+
 if has ("autocmd")
     autocmd filetype java setlocal omnifunc=javacomplete#Complete
     autocmd filetype java setlocal completefunc=javacomplete#CompleteParamsInfo
@@ -44,6 +46,9 @@ if has ("autocmd")
     autocmd filetype python set fdm=indent
 
     autocmd filetype go set noexpandtab
+    autocmd filetype go nmap <leader>t <Plug>(go-test)
+    autocmd filetype go nmap <leader>i <Plug>(go-info)
+    autocmd filetype go nmap <leader>e <Plug>(go-rename)
 endif
 
 let g:go_fmt_command = "goimports"
@@ -51,3 +56,4 @@ let g:go_jump_to_error = 0
 
 inoremap <C-@> <c-x><c-o>
 nmap <F9> :TagbarToggle<CR>
+nmap <leader>m :make<CR>
