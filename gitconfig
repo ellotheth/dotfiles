@@ -20,6 +20,7 @@
 	snap = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
 	pushs = push --recurse-submodules=on-demand
 	wat = !git lgo --all --since='yesterday' && git diff --stat '@{yesterday}'
+	sync = !sh  -c 'git fetch --prune && git branch -f $0 $0@{upstream}'
 [push]
 	default = upstream
 [difftool "winmerge"]
