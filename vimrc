@@ -49,10 +49,25 @@ if has ("autocmd")
     autocmd filetype go nmap <leader>t <Plug>(go-test)
     autocmd filetype go nmap <leader>i <Plug>(go-info)
     autocmd filetype go nmap <leader>e <Plug>(go-rename)
+    autocmd filetype go nmap <leader>c <Plug>(go-coverage-toggle)
+    autocmd filetype go nmap <leader>b <Plug>(go-def-vertical)
+    autocmd filetype go nmap <leader>B <Plug>(go-referrers)
+    autocmd filetype go nmap <leader>T <Plug>(go-alternate-split)
 endif
 
 let g:go_fmt_command = "goimports"
-let g:go_jump_to_error = 0
+let g:go_jump_to_error = 1
+let g:syntastic_go_checkers = ['golint', 'govet', 'go']
+let g:go_info_mode = 'guru'
+"let g:go_auto_sameids = 1
+"let g:go_auto_type_info = 1
+"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+"let g:go_highlight_functions = 1
+"let g:go_highlight_methods = 1
+"let g:go_highlight_fields = 1
+"let g:go_highlight_types = 1
+"let g:go_highlight_operators = 1
+"let g:go_highlight_build_constraints = 1
 
 inoremap <C-@> <c-x><c-o>
 nmap <F9> :TagbarToggle<CR>
