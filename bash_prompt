@@ -20,4 +20,4 @@ cyan="\[\e[36;1m\]"
 white="\[\e[37;1m\]"
 reset="\[\e[0m\]"
 
-export PS1="$black[$green\u $blue@ $cyan\h$black] $red\w $black[$blue\t$black]$green$gitprompt\n$yellow(\`if [ \$? = 0 ]; then echo ^_^; else echo -_-; fi\`) $black\! $reset\$ "
+export PS1="$black[$green\u $blue@ $cyan\h$black] $red\w $black[$blue\t$black]$green$gitprompt\n$yellow(\`e=\$?; if [ \$e = 0 ]; then echo ^_^; else echo -_- \> \$e; fi\`) $black\! $reset\$ "
