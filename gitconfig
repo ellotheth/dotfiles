@@ -1,14 +1,14 @@
 [alias]
 	co = checkout
 	st = status -sb
-	lg = log --graph --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%Cred%d%Creset %Cgreen(%ai)%Creset %C(bold blue)%an%Creset%n%Creset%B' --name-status
+	lg = log --graph --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%Cred%d%Creset %Cgreen(%ai)%Creset %C(bold blue)%an%Creset%n%Creset%B' --name-status --show-signature
 	ls = ls-files
 	unstage = reset HEAD
 	discard = checkout --
 	alias = config --get-regexp alias
 	pr = request-pull
-	lgs = log --graph --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%Cred%d%Creset %Cgreen(%ai)%Creset %C(bold blue)%an%Creset%n%Creset%B' --stat
-	lgo = log --graph --pretty=format:'%C(yellow)%h%Creset%Cred%d%Creset %Cgreen(%ai)%Creset %C(bold blue)%an%n  %Creset%s%Creset'
+	lgs = log --graph --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%Cred%d%Creset %Cgreen(%ai)%Creset %C(bold blue)%an%Creset%n%Creset%B' --stat --show-signature
+	lgo = log --graph --pretty=format:'%C(yellow)%h%Creset%Cred%d%Creset %Cgreen(%ai)%Creset %C(bold blue)%an%n  %Creset%s%Creset' --show-signature
 	cadd = commit --amend -C HEAD
 	idiff = diff --color-words=.
 	lo = log --oneline --graph --decorate
@@ -20,7 +20,7 @@
 	snap = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
 	pushs = push --recurse-submodules=on-demand
 	wat = !git lgo --all --since='yesterday' && git diff --stat '@{yesterday}'
-	sync = !sh  -c 'git fetch --prune && git branch -f $0 $0@{upstream}'
+	sync = !sh  -c 'git fetch --all --prune && git branch -f $0 $0@{upstream}'
 [push]
 	default = upstream
 [difftool "winmerge"]
