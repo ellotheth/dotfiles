@@ -53,6 +53,7 @@ if has ("autocmd")
     autocmd filetype go nmap <leader>b <Plug>(go-def-vertical)
     autocmd filetype go nmap <leader>B <Plug>(go-referrers)
     autocmd filetype go nmap <leader>T <Plug>(go-alternate-split)
+    autocmd filetype go nmap <leader>d <Plug>(go-doc-vertical)
 endif
 
 let g:go_fmt_command = "goimports"
@@ -68,6 +69,9 @@ let g:go_info_mode = 'guru'
 "let g:go_highlight_types = 1
 "let g:go_highlight_operators = 1
 "let g:go_highlight_build_constraints = 1
+
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -Wall -Wextra -Wnarrowing -Wsign-conversion'
 
 inoremap <C-@> <c-x><c-o>
 nmap <F9> :TagbarToggle<CR>

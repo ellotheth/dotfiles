@@ -31,3 +31,5 @@
 	safecrlf = true
 [color]
     ui = on
+[merge]
+    conflictstyle = diff3
