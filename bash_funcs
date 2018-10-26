@@ -1,3 +1,9 @@
+function cd() {
+    [[ -e .cd-bye && "$(stat -c %U .cd-bye)" = "$(whoami)" ]] && . .cd-bye
+    builtin cd "$@"
+    [[ -e .cd-hi && "$(stat -c %U .cd-hi)" = "$(whoami)" ]] && . .cd-hi
+}
+
 function did() {
     git -C ~/projects/done log --graph --all --pretty=format:'%Cgreen(%ar) %Creset%s%Creset' $*
 }
