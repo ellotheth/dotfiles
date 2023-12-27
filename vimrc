@@ -56,10 +56,14 @@ if has ("autocmd")
     autocmd filetype go nmap <leader>d <Plug>(go-doc-vertical)
 endif
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+
 let g:go_fmt_command = "goimports"
 let g:go_jump_to_error = 1
-let g:syntastic_go_checkers = ['golint', 'govet', 'go']
+let g:syntastic_go_checkers = ['govet', 'go']
 let g:go_info_mode = 'guru'
+let g:go_list_type = "quickfix"
 "let g:go_auto_sameids = 1
 "let g:go_auto_type_info = 1
 "let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
