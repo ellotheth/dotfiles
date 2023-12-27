@@ -12,11 +12,3 @@ function d() {
     git -C ~/projects/done commit --allow-empty -q -m "$*"
     did
 }
-
-function opin() {
-    eval "$(source ~/.env.op; op signin wondernetwork.1password.com gemma@wonderproxy.com "$OP_KEY" "$OP_PASS")"
-}
-
-function wonderpass() {
-    op get item "$(op list items |gron |grep -i -e "title = .*$1" |sed -e 's/[";]//g' |cut -f 3- -d' ')" |jq '.overview.url, (.details.fields[] | select(.designation=="password" or .designation=="username").value)'
-}
