@@ -1,3 +1,4 @@
+# start in tilda with `screen -DR tilda`
 defutf8 on
 autodetach on
 
