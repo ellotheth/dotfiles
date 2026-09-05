@@ -58,6 +58,19 @@
         state: link
         mode: 0755
 
+    # in theory these could stay in the dotfiles and get referenced, but kitty
+    # doesn't apply the settings properly or i didn't understand how they get
+    # applied
+    - name: link kitty
+      file:
+        src: '{{ dotfiles }}/kitty/{{ item }}'
+        dest: '{{ home }}/.config/kitty/{{ item }}'
+        state: link
+      with_items:
+        - kitty.conf
+        - quick-access-terminal.conf
+        - current-theme.conf
+
     - name: update bashrc with git improvements
       lineinfile:
         state: present
