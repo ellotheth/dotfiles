@@ -1,6 +1,6 @@
 ---
 - hosts: localhost
-  sudo: no
+  become: no
 
   vars:
     home: '{{ ansible_env.HOME }}'
@@ -56,7 +56,7 @@
         src: '/etc/bash_completion.d/git-prompt'
         dest: '{{ home }}/.git-prompt.sh'
         state: link
-        mode: 0755
+        #mode: 0755
 
     # in theory these could stay in the dotfiles and get referenced, but kitty
     # doesn't apply the settings properly or i didn't understand how they get
